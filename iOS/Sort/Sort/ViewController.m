@@ -18,9 +18,11 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
     
-    NSMutableArray *tempArray = [NSMutableArray arrayWithObjects:@100,@2,@6,@4,@8,@1,@5,@9, nil];
+    NSMutableArray *tempArray = [NSMutableArray arrayWithObjects:@100,@2,@102,@6,@4,@8,@1,@5,@9, nil];
     
-    [self insert_sort:tempArray];
+//    [self insert_sort:tempArray];
+    [self bubble_sort:tempArray];
+
 }
 
 /*
@@ -48,4 +50,34 @@
     
     NSLog(@"%@",array);
 }
+
+
+/*
+ *冒泡排序
+ */
+
+-(void)bubble_sort:(NSMutableArray *)array {
+    for (NSInteger i=1; i < array.count; i ++) {
+        for (NSInteger j=0; j < array.count - i; j ++) {
+            NSNumber *leftNum = array[j];
+            NSInteger leftValue = leftNum.integerValue;
+            
+            NSNumber *rightNum = array[j + 1];
+            NSInteger rightValue = rightNum.integerValue;
+            
+            if(leftValue > rightValue){
+                [array replaceObjectAtIndex:j + 1 withObject:leftNum];
+                [array replaceObjectAtIndex:j  withObject:rightNum];
+
+            }
+        }
+        NSLog(@"bubble_sort===第 %ld 趟扫描=%@",i,array);
+
+    }
+    
+    NSLog(@"bubble_sort=%@",array);
+
+}
+
+
 @end
